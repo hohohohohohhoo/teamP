@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- 복붙 지움. -->
+  	<typeAliases>
+  		<package name="kr.co.dw.domain"/> <!-- mapper 에 타입앞에 패키지 고정 -->
+  	</typeAliases>
+  
+  
+</configuration>
+
+
+
+<!-- 인터넷 검색으로 타이핑함. -->

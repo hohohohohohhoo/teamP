@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.dw.board">
+
+	<update id="increaseReadCnt">
+		UPDATE tbl_board SET readCnt = readCnt+1 WHERE bno = #{bno}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM tbl_board WHERE bno = #{bno}
+	</delete>
+
+	<update id="update">
+		UPDATE tbl_board SET title = #{title}, content = #{content}, updateDay = SYSDATE WHERE bno =#{bno}
+	</update>
+
+	<select id="updateUI" resultType="BoardDTO">
+		SELECT * FROM tbl_board WHERE bno = #{bno}
+	</select>
+	
+
+	<select id="list" resultType="BoardDTO">
+		SELECT * FROM tbl_board ORDER BY bno DESC
+	</select>
+
+
+	<select id="read" resultType="BoardDTO">
+		SELECT * FROM tbl_board WHERE bno = #{bno}
+	</select>
+
+
+	<insert id="insert">
+		INSERT INTO tbl_board (bno, title, content, writer, regDay, updateDay) 
+		VALUES (seq_board_bno.NEXTVAL, #{title}, #{content}, #{writer}, SYSDATE, SYSDATE) 
+	
+		<selectKey keyProperty="bno" resultType="Integer" order="AFTER">
+				SELECT seq_board_bno.CURRVAL from DUAL
+		</selectKey>
+	</insert>
+
+</mapper>

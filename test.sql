@@ -1,0 +1,22 @@
+
+
+
+CREATE TABLE student(
+	sId NUMBER PRIMARY KEY,
+	sName VARCHAR2(15) NOT NULL
+)
+
+CREATE TABLE sugang(
+	sId NUMBER REFERENCES student(sId),
+	cId NUMBER REFERENCES curriculum(cId),
+	CONSTRAINT pk_sugang_sId_cId PRIMARY KEY(sId, cId)
+)
+
+
+
+
+CREATE TABLE curriculum(
+	cId NUMBER PRIMARY KEY,
+	sName VARCHAR2(15) NOT NULL
+)
+
